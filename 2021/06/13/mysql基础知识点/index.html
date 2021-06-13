@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>mysql基础知识点 - LF的个人博客</title><link rel="manifest" href="/LF210-LF210.github.io/manifest.json"><meta name="application-name" content="LF的个人博客"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="LF的个人博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="mysql 服务  启动服务net start mysql 停止服务net stop mysql"><meta property="og:type" content="blog"><meta property="og:title" content="mysql基础知识点"><meta property="og:url" content="https://lf210.github.io/LF210-LF210.github.io/2021/06/13/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/"><meta property="og:site_name" content="LF的个人博客"><meta property="og:description" content="mysql 服务  启动服务net start mysql 停止服务net stop mysql"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://lf210.github.io/LF210-LF210.github.io/img/og_image.png"><meta property="article:published_time" content="2021-06-13T08:30:02.000Z"><meta property="article:modified_time" content="2021-06-13T08:41:50.407Z"><meta property="article:author" content="LF"><meta property="article:tag" content="mysql"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/LF210-LF210.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://lf210.github.io/LF210-LF210.github.io/2021/06/13/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/"},"headline":"mysql基础知识点","image":["https://lf210.github.io/LF210-LF210.github.io/img/og_image.png"],"datePublished":"2021-06-13T08:30:02.000Z","dateModified":"2021-06-13T08:41:50.407Z","author":{"@type":"Person","name":"LF"},"publisher":{"@type":"Organization","name":"LF的个人博客","logo":{"@type":"ImageObject","url":"https://lf210.github.io/img/logo.svg"}},"description":"mysql 服务  启动服务net start mysql 停止服务net stop mysql"}</script><link rel="canonical" href="https://lf210.github.io/LF210-LF210.github.io/2021/06/13/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/"><link rel="icon" href="/LF210-LF210.github.io/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/LF210-LF210.github.io/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/LF210-LF210.github.io/"><img src="/LF210-LF210.github.io/img/logo.svg" alt="LF的个人博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/LF210-LF210.github.io/">首页</a><a class="navbar-item" href="/LF210-LF210.github.io/archives">档案</a><a class="navbar-item" href="/LF210-LF210.github.io/categories">分类</a><a class="navbar-item" href="/LF210-LF210.github.io/tags">标签</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-06-13T08:30:02.000Z" title="2021/6/13 下午4:30:02">2021-06-13</time>发表</span><span class="level-item"><time dateTime="2021-06-13T08:41:50.407Z" title="2021/6/13 下午4:41:50">2021-06-13</time>更新</span><span class="level-item"><a class="link-muted" href="/LF210-LF210.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span><span class="level-item">21 分钟读完 (大约3176个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">mysql基础知识点</h1><div class="content"><ol>
+<li><p>mysql 服务</p>
+<ul>
+<li>启动服务<br>net start mysql</li>
+<li>停止服务<br>net stop mysql<span id="more"></span></li>
+</ul>
+</li>
+<li><p>创建/添加</p>
+<ul>
+<li>创建数据库<br>create database 数据库名;</li>
+<li>创建表(创建表时至少要有一个字段)<br>create table 表名(字段名 字段类型 [字段属性])[字符集];</li>
+<li>添加字段(默认添加到最后)<br>alter table 表名 add 新字段名 字段类型 [字段属性] [位置(first/after 字段名)];</li>
+<li>添加数据<br>insert into 表名 [字段名] values (数据);</li>
+<li>批量添加数据<br>insert into 表名 [字段名] values(数据 1),(数据 2)…;</li>
+</ul>
+</li>
+<li><p>删除</p>
+<ul>
+<li>删除数据库<br>drop database 数据库名;</li>
+<li>删除表<br>drop table 表名;</li>
+<li>批量删除表<br>drop table 表名 1,表名 2…;</li>
+<li>删除字段<br>alter table 表名 drop 字段名;</li>
+<li>删除数据<br>delete 字段名 from 表名 [where 条件];</li>
+<li>限制删除数据的数量<br>delete 字段名 from 表名 [where 条件] limit 限制的数量;</li>
+<li>删除所有数据并重置自动增长 auto_increment 的值<br>truncate 表名</li>
+</ul>
+</li>
+<li><p>修改</p>
+<ul>
+<li>修改表名<br>rename table 旧表名 to 新表名;</li>
+<li>修改字段<br>alter table 表名 change 旧字段名 新字段名 字段类型 [字段属性];</li>
+<li>修改字段类型<br>alter table 表名 modify 字段名 字段类型 [字段属性];</li>
+<li>修改数据<br>update 表名 set 字段 = 新值 [where 条件];</li>
+<li>限制修改数据的数量<br>update 表名 set 字段 = 新值 [where 条件] limit 限制的数量;</li>
+<li>修改客户端所有字符集<br>set names 字符集;</li>
+</ul>
+</li>
+<li><p>查询</p>
+<ul>
+<li>查询所有数据库<br>show databases;</li>
+<li>按条件查询数据库<br>show databases like 条件(xx%以 xx 开头,%xx 以 xx 结尾,xx_yy 以 xx 开头且以 yy 结尾);</li>
+<li>查询数据库创建语句<br>show create database 数据库名</li>
+<li>查询所有表<br>show tables;</li>
+<li>按条件查询表<br>show tables like 条件(xx%以 xx 开头,%xx 以 xx 结尾,xx_yy 以 xx 开头且以 yy 结尾);</li>
+<li>查询表创建语句<br>show create table 表名;</li>
+<li>查询表结构<br>desc 表名;</li>
+<li>查询数据<br>select 字段名 from 表名;</li>
+<li>根据条件查询数据<br>select 字段名 from 表名 where 字段名 = 值;</li>
+</ul>
+</li>
+<li><p>字段类型</p>
+<ul>
+<li><p>整数类型<br>tinyint(迷你整形，用 1 个字节保存的整形，最大能表示的数是 0-255)<br>smallint(小整形，用 2 个字节保存的整形，最大能表示的数是 0-65535)<br>mediumint(中整形，用 3 个字节保存的整形)<br>int(整形，用 4 个字节保存的整形)<br>bigint(大整型，用 8 个字节保存的整形)</p>
+</li>
+<li><p>浮点型(可能损失精度)<br>float(单精度类型小数)<br>double(双精度类型小数)</p>
+</li>
+<li><p>定点型(能保证精度)<br>decimal(定点型)</p>
+</li>
+<li><p>时间类型<br>date(日期类型 YYYY-mm-dd)<br>time(时间类型 HH:ii:ss)<br>datatime(日期时间类型 YYYY-mm-dd HH:ii:ss)<br>timestamp(时间戳类型 YYYY-mm-dd HH:ii:ss)<br>year(年类型 YYYY)</p>
+</li>
+<li><p>字符串类型<br>char(定长字符)<br>varchar(变长字符)</p>
+</li>
+<li><p>文本类型<br>text(存储普通的文本类型)<br>blob(存储二进制的文本类型)</p>
+</li>
+<li><p>枚举类型<br>enum(枚举类型,可以规范数据本身,限定只能插入规定的数据,并且可以节省存储空间)</p>
+</li>
+<li><p>集合类型<br>set(集合类型)</p>
+</li>
+</ul>
+</li>
+<li><p>字段属性(null，默认值，烈描述，主键，唯一键，自动增长)</p>
+<ul>
+<li><p>null 属性，代表字段能否为空<br> 默认为 yes(字段默认能为空)<br> 用法：设置 not null 时字段不能为空</p>
+</li>
+<li><p>默认值 default，规定字段的默认值<br>default 的默认值为 null<br>如果在插入数据时为空,则数据变为默认值<br>用法：default 默认值</p>
+</li>
+<li><p>列描述<br>comment 是给开发人员的注释<br>用法：comment 注释</p>
+</li>
+<li><p>主键<br>primary key 是保证字段值的唯一性的键，一张表中只能有一个主键<br>用法 1：随表创建(直接在需要设置主键的字段名后面添加 primary key)<br>用法 2：随表创建(在所有字段之后添加 primary key(字段名))<br>用法 3：表后添加(alter 表名 add primary key(字段名))<br>删除主键：alter table 表名 drop primary key<br>主键约束：1.(主键所在的字段对应的数据不能为空) 2.(主键所在字段对应的数据不能有任何重复)</p>
+</li>
+<li><p>唯一键<br>unique key 是保证字段值唯一性的键，一张表中能有多个唯一键<br>unique key 允许所在字段对应的数据为 null，null 可以有多个(null 不参与比较)<br>用法 1：随表创建(直接在需要设置主键的字段名后面添加 unique [key])<br>用法 2：随表创建(之间在所有字段之后添加 unique key(字段名))<br>用法 3：表后添加(alter 表名 add unique key(字段名))<br>删除唯一键：alter table 表名 drop index(唯一键所在的字段名)<br>唯一键作用：在数据不为空的情况下,不允许重复</p>
+</li>
+<li><p>自动增长<br>auto_increment 当给字段设置自动增长之后，当改字段的数据为空时，系统根据之前存在的数据进行自动添加(只适用于数值)<br>一张表中只能存在一个自动增长的字段,且该字段必须设置为主键或唯一键<br>用法 1：随表创建(直接在需要设置自动增长的字段名后面添加 auto-increment)<br>修改自动增长：alter table 表名 auto_increment = 值(只能改大不能改的比原有数字小)<br>删除自动增长方法 1：alter table 表名 change 自动增长所在的字段名 自动增长所在的字段名 原有字段类型;<br>删除自动增长方法 2：alter table 表名 modify 自动增长所在的字段名 原有字段类型</p>
+</li>
+<li><p>外键<br>用于表间关系的一一对应<br>用法：随表创建(在创建表最后使用：foreign key(外键名) references 对应的主键的表名(对应表中的主键字段))</p>
+</li>
+</ul>
+</li>
+<li><p>表间关系</p>
+<ul>
+<li><p>一对一<br>一张表中的一条记录与另外一张表中最多有一条明确的关系，通常设计保证两张表中使用同样的主键即可<br>常见用处：将一张表拆分，常用的字段放一张表，不常用的字段放另一张表</p>
+</li>
+<li><p>一对多<br>在多关系的表中对应一个表的一个字段，这个字段也是一关系的主键</p>
+</li>
+<li><p>多对多<br>一张表的一条记录在另一张表中能匹配到多条记录，反之亦然</p>
+</li>
+</ul>
+</li>
+<li><p>主键冲突<br>在插入数据时，有时会出现主键重复的冲突<br>解决方法 1：insert into 表名 [字段名] values(值) on duplicate key update 字段 = 新值;<br>解决方法 2：replace into 表名 [字段名] values(值);<br>如果插入数据时出现主键重复的冲突则会删除原来的数据，再将新的数据插入</p>
+</li>
+<li><p>蠕虫复制<br>从已有的数据中获取数据，成倍复制后插入到表中<br>用法：insert into 表名[字段名] select */字段名 from 表名<br>意义：可以快速增加表中的数据量，主要用于测试表的压力</p>
+</li>
+<li><p>高级查询<br>select [select 选项] 字段列表 from 数据 [where 条件] group by 分组 having 条件 order by 排序 limit 限制数字;</p>
+<ul>
+<li><p>select 选项(系统应如何处理查询到的结果)</p>
+</li>
+<li><p>all(默认)：表示保存所有的记录</p>
+</li>
+<li><p>distinct：去除重复的记录，只保留一条</p>
+</li>
+<li><p>字段列表(由单个或多个字段名组成，全部字段用*表示)</p>
+</li>
+<li><p>将查询出的字段名修改为别名：字段名 [as] 别名</p>
+</li>
+<li><p>from 数据</p>
+</li>
+<li><p>单表数据：from 表名</p>
+</li>
+<li><p>多表数据：from 表名 1,表名 2,…(会出现笛卡尔积,避免使用)</p>
+</li>
+<li><p>动态数据：select * from (select 字段名 from 表名) as 别名</p>
+</li>
+<li><p>where 条件<br>用于在从数据库中拿数据的时候进行条件筛选</p>
+</li>
+<li><p>group by 数据分组<br>单分组用法：group by 字段名(根据字段名进行分类)<br>group by 一般与聚合函数组合使用：</p>
+</li>
+<li><p>count()统计每组中的数量，如果统计目标是字段则不统计 null，如果为*则统计每条记录</p>
+</li>
+<li><p>avg()求目标字段平均值</p>
+</li>
+<li><p>max()求目标字段的最大值</p>
+</li>
+<li><p>min()求目标字段的最小值</p>
+</li>
+<li><p>sum()求和<br>group_concat()字符串拼接，可以将字符串拼接到一起<br>多分组用法：group by 字段名 1,字段名 2<br>字段排序：1.升序(默认)：group asc 2. 降序：group desc<br>回溯统计：当分组进行多分组之后，往上统计的过程中，需要进行层层上报，将这种层层上报统计的过程称之为回溯统计<br>用法：group by 字段[asc/desc] with rollup;</p>
+</li>
+<li><p>having 数据筛选<br>用法：having 条件(与 where 用法类似)<br>where 与 having 的区别：where 不能用聚合函数和函数别名，having 则可以使用</p>
+</li>
+<li><p>order by 数据排序<br>用法：order by 字段 [asc/desc]</p>
+</li>
+<li><p>limit 限制记录数量<br>用法：limit 限制的数量<br>分页用法：limit 获取的索引,获取的数据量</p>
+</li>
+</ul>
+</li>
+<li><p>算术运算符(+ - * / %)</p>
+<ul>
+<li>除法的运算结果是以浮点数表示的</li>
+<li>除法中如果除数为 0,结果为 null</li>
+<li>对 null 进行任何算术运算结果都为 null</li>
+</ul>
+</li>
+<li><p>比较运算符(&gt; &gt;= &lt; &lt;= = &lt;&gt;)</p>
+<ul>
+<li>数据会先转换为同类型再进行比较(字符串和数字)</li>
+<li>代表 false 1 代表 true</li>
+<li>条件区间 between 条件 1 and 条件 2(条件 1 必须小于等于条件 2，否则会查找不到数据，如果条件 1 与条件 2 值相等即为查找那个值)</li>
+</ul>
+</li>
+<li><p>逻辑运算符(and,or,not)</p>
+<ul>
+<li>and 逻辑与 表示既要…又要…<br>单个 and 跟 between 作用相同</li>
+<li>or 逻辑或 表示要么…要么…</li>
+<li>not 逻辑非 表示否定</li>
+</ul>
+</li>
+<li><p>in 运算符<br>用于替代= 当结果不是单个值 而是一个集合(很多值)的时候使用<br>例如：select * from 表名 where id in(‘值 1’,’值 2’…)</p>
+</li>
+<li><p>is 运算符<br>is 用于判断数据是否为 null<br>用法：is null/is not null</p>
+</li>
+<li><p>like 运算符<br>like 用于模糊匹配<br>用法:like 匹配模式(_匹配对应的单个结果,%用于匹配对应的多个结果)</p>
+</li>
+<li><p>联合查询<br>联合查询可以合并多个类似的选择查询的结果集(不同的表的字段数量必须相同，字段名以第一个表中的字段为准)<br>用法：select 语句 union[union 选项] select 语句<br>union 选项：1. all(显示全部数据无论是否重复，默认值) 2. distinct(显示去重后的数据)<br>如果在联合查询中使用 order by 那么对应的 select 语句必须用括号括起来，语句后必须加 limit 限制语句</p>
+</li>
+<li><p>连接查询<br>连接查询是将多张表连到一起进行查询的查询法(会导致记录数行和字段数列发生改变)</p>
+<ul>
+<li><p>交叉连接：将一张表的数据与另一张表的数据进行交叉(会产生笛卡尔积，实际作用不大)<br>用法 1：select _ from 表 1 cross join 表 2;<br>用法 2：select _ from 表 1,表 2;</p>
+</li>
+<li><p>内连接：从一张表中取出所有的数据去另一张表中匹配，符合匹配条件则保留，不符合条件则放弃<br>用法：select * from 表 1 inner join 表 2 on 匹配条件(表 1.字段名 = 表 2.字段名)<br>如果内连接没有条件，结果就会与交叉连接一样(笛卡尔积)<br>内连接可以不加 on 条件,因此可以在数据匹配完成后使用 where 进行条件限制，效果用 on 一样(最好用 on)</p>
+</li>
+<li><p>外连接：以一张表作为主表，根据条件去匹配另一张表，从而得到目标数据<br>外连接分为 1. left join 左连接(主表在左侧) 2. right join 右连接(主表在右侧)<br>原理：拿主表的每一条数据与从表的每一条数据根据条件进行匹配，从表中数据满足条件保留，不满足条件则显示为 null(主表中字段一定会保留)<br>左连接用法：select _ from 表 1(主表) left join 表 2(从表) on 条件<br>右连接用法：select _ from 表 1(从表) right join 表 2(主表) on 条件</p>
+</li>
+<li><p>using 关键字<br>using 关键字用于在连接查询中代替 on 进行条件匹配的<br>使用 using 关键字的前提是对应的两张表连接的字段是同名的<br>如果使用 using 关键字，对应的同名字段在结果中只会保留一个<br>用法：select * from 表 1 [inner,left,right]join 表 2 using(同名字段列表);</p>
+</li>
+</ul>
+</li>
+</ol>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/LF210-LF210.github.io/tags/mysql/">mysql</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/LF210-LF210.github.io/2021/06/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="level-item">数据结构</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://res.insta360.com/static/assets/storage/20210609/459994f499f6ce813aa2d819afbfc916/avatar.png" alt="LF"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">LF</p><p class="is-size-6 is-block">我的博客</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>中国 深圳</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/LF210-LF210.github.io/archives"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/LF210-LF210.github.io/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/LF210-LF210.github.io/tags"><p class="title">5</p></a></div></div></nav></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/LF210-LF210.github.io/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/LF210-LF210.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="level-start"><span class="level-item">数据库</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/LF210-LF210.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">数据结构与算法</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/LF210-LF210.github.io/categories/%E8%BF%90%E7%BB%B4/"><span class="level-start"><span class="level-item">运维</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-13T08:30:02.000Z">2021-06-13</time></p><p class="title"><a href="/LF210-LF210.github.io/2021/06/13/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/">mysql基础知识点</a></p><p class="categories"><a href="/LF210-LF210.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-13T06:17:51.000Z">2021-06-13</time></p><p class="title"><a href="/LF210-LF210.github.io/2021/06/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></p><p class="categories"><a href="/LF210-LF210.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-13T06:10:00.000Z">2021-06-13</time></p><p class="title"><a href="/LF210-LF210.github.io/2021/06/13/%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">几种常用的排序算法</a></p><p class="categories"><a href="/LF210-LF210.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-10T03:08:24.000Z">2021-06-10</time></p><p class="title"><a href="/LF210-LF210.github.io/2021/06/10/nginx%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/">nginx常用配置</a></p><p class="categories"><a href="/LF210-LF210.github.io/categories/%E8%BF%90%E7%BB%B4/">运维</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-09T14:53:10.000Z">2021-06-09</time></p><p class="title"><a href="/LF210-LF210.github.io/2021/06/09/mockjs%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/">mockjs常用配置</a></p><p class="categories"><a href="/LF210-LF210.github.io/categories/%E5%89%8D%E7%AB%AF/">前端</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/LF210-LF210.github.io/archives/2021/06/"><span class="level-start"><span class="level-item">六月 2021</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/LF210-LF210.github.io/tags/mockjs/"><span class="tag">mockjs</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/LF210-LF210.github.io/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/LF210-LF210.github.io/tags/nginx/"><span class="tag">nginx</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/LF210-LF210.github.io/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"><span class="tag">排序算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/LF210-LF210.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="tag">数据结构</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/LF210-LF210.github.io/"><img src="/LF210-LF210.github.io/img/logo.svg" alt="LF的个人博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 LF</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/LF210-LF210.github.io/js/column.js"></script><script src="/LF210-LF210.github.io/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/LF210-LF210.github.io/js/back_to_top.js" defer></script><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><script src="/LF210-LF210.github.io/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/LF210-LF210.github.io/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/LF210-LF210.github.io/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
